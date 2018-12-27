@@ -1,5 +1,5 @@
 ## Update log
 ```
-  test gitignore
+  test webpack for React.
 
 ```
