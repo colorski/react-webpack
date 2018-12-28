@@ -1,8 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-
-const devMode = process.env.NODE_ENV !== 'production';
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
     mode: "development",
@@ -35,20 +33,17 @@ module.exports = {
             },
             {
                 test:/\.css$/,
-                use: [
-                    devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                ]
+                use: ExtractTextPlugin.extract({
+                    fallback: "style-loader",
+                    use: "css-loader"
+                })
             }
         ]
     },
 
     plugins: [
         new webpack.BannerPlugin('版权或者版本信息！'),
-        new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
-        })
+        new ExtractTextPlugin("styles.css"),
     ],
 
     //用这个是方便调试，但是不用会大大压缩打包的代码量
