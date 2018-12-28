@@ -1,3 +1,10 @@
 .app-wrap {
-  color: #f00;
+  padding: 2rem;
+  color: blueviolet;
+}
+.app-wrap p {
+  line-height: 2;
+}
+.app-wrap span {
+  cursor: pointer;
 }

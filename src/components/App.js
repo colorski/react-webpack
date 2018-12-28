@@ -4,6 +4,9 @@ import './App.css';
 
 export default class App extends React.Component {
     render (){
-        return <div className="app-wrap" onClick={()=>console.log('123')}>{ d.text }</div>
+        return <div className="app-wrap">
+            <p>{ d.say }</p>
+            <span onClick={()=>alert('蟹蟹！')}>{ d.btnText }</span>
+        </div>
     }
 }

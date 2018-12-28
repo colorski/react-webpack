@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
     mode: "development",
@@ -10,15 +12,15 @@ module.exports = {
         host:'localhost',
         compress:true,
         inline:true,
-        port:3030
+        port:3030,
+        hot: true
     },
 
     entry:'./src/index.js',
 
     output:{
         path:path.resolve(__dirname,'dist'),
-        filename:'bundle.js',
-        publicPath:'temp/'
+        filename:'bundle_[hash].js',
     },
     
     module: {
@@ -26,10 +28,7 @@ module.exports = {
             {
                 test:/(\.jsx|\.js)$/,
                 exclude:/node_modules/,
-                loader:"babel-loader",
-                query:{
-                    presets:['env','react']
-                }
+                loader:"babel-loader"
             },
             {
                 test:/\.css$/,
@@ -42,10 +41,21 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.BannerPlugin('版权或者版本信息！'),
-        new ExtractTextPlugin("styles.css"),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.BannerPlugin('author: colorski, qq: 290518066, hash: [hash], file: [file]'),
+        new ExtractTextPlugin("style.css"),
+        new HtmlWebpackPlugin({
+            filename: __dirname + "/dist/index.html",
+            template: __dirname + "/src/template.html"
+        }),
+        new HtmlWebpackPlugin({
+            filename: __dirname + "/index.html",
+            template: __dirname + "/src/template.html"
+        }),
+        new CleanWebpackPlugin('dist/*.*', {
+            root: __dirname,
+            verbose: true,
+            dry: false
+        }),
     ],
-
-    //用这个是方便调试，但是不用会大大压缩打包的代码量
-    //devtool: 'eval-source-map'
 }
