@@ -68,22 +68,27 @@ module.exports = {
 ## Plugins
 ```
 1.BannerPlugin('版权或者版本信息！')
+
 在打包后的bundle.js里头部添加一些信息，如版权或版本信息；
 
 2.mini-css-extract-plugin 
+
 还没用明白 删除了，用的3
 
 3.extract-text-webpack-plugin
+
 从js文件中分离出独立的css文件
 https://www.npmjs.com/package/extract-text-webpack-plugin
 
 4.UglifyJsPlugin  
+
 压缩js代码，在webpack@4已经是内置模块了，直接在package.json里打包webpack的地方声明一下mode是生产模块即可：
 "scripts": {
   "dist": "webpack --mode production",
 },
 
 5.Hot Module Replacement
+
 热加载
 
 6.html-webpack-plugin
@@ -91,6 +96,7 @@ https://www.npmjs.com/package/extract-text-webpack-plugin
 https://www.npmjs.com/package/html-webpack-plugin
 
 7.clean-webpack-plugin
+
 把6.html-webpack-plugin生成的文件进行清理
 https://www.npmjs.com/package/clean-webpack-plugin
 
@@ -100,6 +106,7 @@ https://www.npmjs.com/package/clean-webpack-plugin
 ```
 
 ----  1. Tree Shaking  打包优化
+
 用于移除js中未引用的代码；
 在webpack@4中，通过 pakage.json 的 sideEffects 属性作为标记，表明项目中哪些文件是"pure"（纯es6模块），由此可以安全删除文件中未引用部分。
 
