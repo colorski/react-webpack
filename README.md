@@ -1,4 +1,4 @@
-The use of webpack for react.
+The use of webpack for react. It contains the base config, some usefull plugins, and some points for optimization;
 
 ## 1.webpack.config.js
 ```
@@ -67,7 +67,7 @@ module.exports = {
 ```
 ## Plugins
 ```
-1.new webpack.BannerPlugin('版权或者版本信息！')  
+1.BannerPlugin('版权或者版本信息！')
 在打包后的bundle.js里头部添加一些信息，如版权或版本信息；
 
 2.mini-css-extract-plugin 
@@ -78,7 +78,7 @@ module.exports = {
 https://www.npmjs.com/package/extract-text-webpack-plugin
 
 4.UglifyJsPlugin  
-压缩js代码，在webpack@4已经不需要了，直接在package.json里打包webpack的地方声明一下mode是生产模块即可：
+压缩js代码，在webpack@4已经是内置模块了，直接在package.json里打包webpack的地方声明一下mode是生产模块即可：
 "scripts": {
   "dist": "webpack --mode production",
 },
@@ -96,3 +96,17 @@ https://www.npmjs.com/package/clean-webpack-plugin
 
 
 ```
+## Opatimization
+```
+
+----  1. Tree Shaking  打包优化
+用于移除js中未引用的代码；
+在webpack@4中，通过 pakage.json 的 sideEffects 属性作为标记，表明项目中哪些文件是"pure"（纯es6模块），由此可以安全删除文件中未引用部分。
+
+https://webpack.docschina.org/guides/tree-shaking/
+
+按照设置好像不起作用。。。需要进一步了解“无副作用”
+https://zhuanlan.zhihu.com/p/32831172
+
+
+
