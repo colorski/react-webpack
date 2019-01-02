@@ -4,7 +4,9 @@ The use of webpack for react. It contains the base config, some usefull plugins,
 ```
 const webpack = require('webpack');
 const path = require('path');
+
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
@@ -26,6 +28,19 @@ module.exports = {
         path:path.resolve(__dirname,'dist'),
         filename:'bundle_[hash].js',
     },
+
+    // optimization: {
+    //     splitChunks: {
+    //       cacheGroups: {
+    //         styles: {
+    //           name: 'styles',
+    //           test: /\.css$/,
+    //           chunks: 'all',
+    //           enforce: true
+    //         }
+    //       }
+    //     }
+    // },
     
     module: {
         rules:[
@@ -40,6 +55,10 @@ module.exports = {
                     fallback: "style-loader",
                     use: "css-loader"
                 })
+                // use: [
+                //     MiniCssExtractPlugin.loader,
+                //     "css-loader"
+                // ]
             }
         ]
     },
@@ -47,7 +66,10 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.BannerPlugin('author: colorski, qq: 290518066, hash: [hash], file: [file]'),
-        new ExtractTextPlugin("style.css"),
+        new ExtractTextPlugin("styles.css"),
+        // new MiniCssExtractPlugin({
+        //     filename: "[name].css",
+        //   }),
         new HtmlWebpackPlugin({
             filename: __dirname + "/dist/index.html",
             template: __dirname + "/src/template.html"
@@ -56,6 +78,7 @@ module.exports = {
             filename: __dirname + "/index.html",
             template: __dirname + "/src/template.html"
         }),
+        //注意，下边清除文件的时候，如果只使用dist/*.*，清除不了文件夹，不如使用dist/*全部清除
         new CleanWebpackPlugin('dist/*.*', {
             root: __dirname,
             verbose: true,
@@ -63,6 +86,7 @@ module.exports = {
         }),
     ],
 }
+
 
 ```
 ## Plugins
@@ -73,7 +97,8 @@ module.exports = {
 
 2.mini-css-extract-plugin 
 
-还没用明白 删除了，用的3
+除了3.的分离独立css功能外，还有其他功能和优势如：异步加载、性能更好、更易使用，将来还有目标支持热加载；
+https://webpack.js.org/plugins/mini-css-extract-plugin/
 
 3.extract-text-webpack-plugin
 

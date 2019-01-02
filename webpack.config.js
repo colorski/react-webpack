@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+//const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
@@ -19,8 +21,21 @@ module.exports = {
     entry:'./src/index.js',
 
     output:{
-        path:path.resolve(__dirname,'dist'),
+        path:path.resolve(__dirname,'dist/'),
         filename:'bundle_[hash].js',
+    },
+
+    optimization: {
+        splitChunks: {
+          cacheGroups: {
+            styles: {
+              name: 'styles',
+              test: /\.css$/,
+              chunks: 'all',
+              enforce: true
+            }
+          }
+        }
     },
     
     module: {
@@ -32,10 +47,14 @@ module.exports = {
             },
             {
                 test:/\.css$/,
-                use: ExtractTextPlugin.extract({
-                    fallback: "style-loader",
-                    use: "css-loader"
-                })
+                // use: ExtractTextPlugin.extract({
+                //     fallback: "style-loader",
+                //     use: "css-loader"
+                // })
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    "css-loader"
+                ]
             }
         ]
     },
@@ -43,7 +62,10 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.BannerPlugin('author: colorski, qq: 290518066, hash: [hash], file: [file]'),
-        new ExtractTextPlugin("style.css"),
+        //new ExtractTextPlugin("styles.css"),
+        new MiniCssExtractPlugin({
+            filename: "[name].css",
+        }),
         new HtmlWebpackPlugin({
             filename: __dirname + "/dist/index.html",
             template: __dirname + "/src/template.html"
