@@ -68,11 +68,11 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: __dirname + "/dist/index.html",
-            template: __dirname + "/src/template.html"
+            template: __dirname + "/template.html"
         }),
         new HtmlWebpackPlugin({
             filename: __dirname + "/index.html",
-            template: __dirname + "/src/template.html"
+            template: __dirname + "/template.html"
         }),
         new CleanWebpackPlugin('dist/*.*', {
             root: __dirname,

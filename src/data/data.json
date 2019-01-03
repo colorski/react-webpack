@@ -1,4 +1,5 @@
 {
   "say": "Test react jsx",
-  "btnText": "Test click event"
+  "btnText": "Test click event",
+  "version": "1.0.0"
 }

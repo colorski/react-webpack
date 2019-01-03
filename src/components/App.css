@@ -1,10 +1,45 @@
 .app-wrap {
-  padding: 2rem;
-  color: blueviolet;
+  display: flex; 
+  flex-flow: column; 
+  min-height: 100vh;
+}
+.app-wrap header {
+  line-height: 3;
+  margin: 10px 10px 0 10px;
+  border-bottom: 1px solid #333;
+}
+.app-wrap header a {
+  display: inline-block;
+  text-decoration: none;
+  color: #333;
+  padding:0 10px;
+  margin: 0 5px;
+}
+.app-wrap header a.active {
+  background-color: #222;
+  color: #fff;
 }
 .app-wrap p {
   line-height: 2;
 }
 .app-wrap span {
   cursor: pointer;
+}
+
+.main {
+  flex: 1;
+  padding: 2rem;
+  color: blueviolet;
+}
+.footer {
+  display:flex;
+
+}
+.footer p {
+  flex: 1;
+  padding:0 10px;
+  line-height: 3;
+}
+.footer p:last-child {
+  text-align: right;
 }
