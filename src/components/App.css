@@ -6,7 +6,7 @@
 .app-wrap header {
   line-height: 3;
   margin: 10px 10px 0 10px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #ddd;
 }
 .app-wrap header a {
   display: inline-block;
@@ -31,9 +31,26 @@
   padding: 2rem;
   color: blueviolet;
 }
+.main pre {
+  padding:10px;
+  background-color: #f0f0f0;
+  border-left: 3px solid #ddd;
+}
+.main pre p {
+  line-height: 1.6;
+  color: #aaa;
+  font-size: .8rem;
+}
+.main hr {
+  margin: 1rem 0;
+
+  height: 1px;
+  border: none;
+  background-color: #eee;
+}
 .footer {
   display:flex;
-
+  border-top: solid 1px #ddd;
 }
 .footer p {
   flex: 1;
@@ -42,4 +59,41 @@
 }
 .footer p:last-child {
   text-align: right;
+}
+
+.user {
+  display: flex;
+}
+.user-nav {
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  border-right: dashed 1px #ddd;
+  margin-right: 10px;
+}
+.user-nav a {
+  line-height: 2;
+  text-align: center;
+  text-decoration: none;
+  color: #222;
+}
+.user-nav a.active {
+  background-color: #222;
+  color: #fff;
+}
+.user-block {
+  flex: 1;
+  padding: 10px;
+}
+.user-block strong {
+  font-weight: bold;
+  color: #f00;
+}
+.user-block ul {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: dashed 1px #ddd;
+}
+.user-block ul li {
+  line-height: 2;
 }

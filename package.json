@@ -11,7 +11,7 @@
   "license": "ISC",
   "main": "index.js",
   "scripts": {
-    "dist": "webpack --mode production",
+    "dist": "set NODE_ENV=production && webpack --config ./webpack.production.config.js --progress",
     "start": "webpack-dev-server --open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

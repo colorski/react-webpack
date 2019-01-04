@@ -7,24 +7,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
-    mode: "development",
-
-    devServer:{
-        historyApiFallback: true,
-        contentBase:path.join(__dirname, "./"),
-        host:'localhost',
-        compress:true,
-        inline:true,
-        port:3030,
-        hot: true
-    },
+    mode: "production",
 
     entry:'./src/index.js',
 
     output:{
         path:path.resolve(__dirname,'dist'),
         filename:'bundle_[hash].js',
-        publicPath: '/'
     },
 
     optimization: {
@@ -62,7 +51,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
+        //new webpack.HotModuleReplacementPlugin(),
         new webpack.BannerPlugin('author: colorski, qq: 290518066, hash: [hash], file: [file]'),
         //new ExtractTextPlugin("styles.css"),
         new MiniCssExtractPlugin({
@@ -70,10 +59,6 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename: __dirname + "/dist/index.html",
-            template: __dirname + "/template.html"
-        }),
-        new HtmlWebpackPlugin({
-            filename: __dirname + "/index.html",
             template: __dirname + "/template.html"
         }),
         new CleanWebpackPlugin('dist/*.*', {
