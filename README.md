@@ -91,7 +91,7 @@ module.exports = {
 
 ```
 ## Plugins
-```
+
 1.BannerPlugin('版权或者版本信息！')
 
 在打包后的bundle.js里头部添加一些信息，如版权或版本信息；
@@ -127,9 +127,8 @@ https://www.npmjs.com/package/html-webpack-plugin
 https://www.npmjs.com/package/clean-webpack-plugin
 
 
-```
 ## Opatimization
-```
+
 
 ----  1. Tree Shaking  打包优化
 
@@ -142,9 +141,9 @@ https://webpack.docschina.org/guides/tree-shaking/
 https://zhuanlan.zhihu.com/p/32831172
 
 
-```
+
 ## react-router@4.28.2
-```
+
 
 ----  1.关于二级路径页面刷新404的问题
 
@@ -170,6 +169,7 @@ https://zhuanlan.zhihu.com/p/32831172
 详情页：/users/list/detail/:id
 注意，在配置route的时候合理使用exact，像这样：
 
+```
 <Switch>
     <Route path='/' exact component={Home} />
     <Route path='/products' component={Product} />
@@ -179,4 +179,5 @@ https://zhuanlan.zhihu.com/p/32831172
     <Redirect to='/' />
 </Switch>
 
+```
 
