@@ -3,7 +3,6 @@ import { NavLink, Link } from 'react-router-dom';
 
 export default class UserDetail extends React.Component {
     render (){
-        console.log(this.props)
         const { match, history } = this.props;
         return <main className="main user">
             <nav className="user-nav">
